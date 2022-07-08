@@ -1,0 +1,27 @@
+#basic{
+    margin-top: 52px;
+}
+.container-login{
+    border: 1px solid darkgray;
+    border-radius: 25px;
+    width: 33%;
+    position: relative;
+    left: 654px;
+    top: 154px;
+    height: 323px;
+    z-index: 1;
+}
+.button-signup{
+    margin-right: 50px;
+}
+.title-login{
+    position: relative;
+    z-index: 2;
+    font-size: 26px;
+    font-family: 'Finlandica', sans-serif;
+    text-decoration: underline;
+    bottom: 24px;
+    left: 105px;
+    background-color: white;
+    width: 79px;
+}

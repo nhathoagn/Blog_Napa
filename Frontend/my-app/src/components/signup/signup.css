@@ -1,0 +1,30 @@
+.container-signup{
+    border: 1px solid darkgray;
+    border-radius: 25px;
+    width: 33%;
+    position: relative;
+    top: 154px;
+    left: 654px;
+    height: 500px;
+    z-index: 1;
+}
+
+/*#register{*/
+/*    position: relative;*/
+/*    top: 50px;*/
+/*}*/
+.title-signup{
+    font-size: 26px;
+    font-family: 'Finlandica', sans-serif;
+    z-index: 2;
+    text-decoration: underline;
+    width: 84px;
+    background-color: white;
+    bottom: 24px;
+    left: 68px;
+    position: relative;
+}
+.button-signup{
+    margin-right: 50px;
+    border-radius: 2px;
+}
