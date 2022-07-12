@@ -1,0 +1,107 @@
+
+/*
+header
+------
+*/
+.ant-layout-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+.header .logo .site-title{
+    font-family: 'Beyond The Mountains';
+    font-size: 32px;
+}
+/*.site-title {*/
+/*    font-size: 72px;*/
+/*    font-family: 'BeyondTheMountains';*/
+/*}*/
+
+.header .logo .site-title a {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+.header .logo .site-description{
+    width: 207px;
+    margin: -23px 0 0;
+    font-size: 10px;
+    letter-spacing: 0.26rem;
+    color: #9d9d9d;
+    text-transform: uppercase;
+    text-align: right;
+
+}
+.header .logo .top-logo{
+    display: flex;
+}
+.header .logo {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.header .logo .fas {
+    color: #1890ff;
+    margin: 0 5px 0 0;
+    font-size: 28px;
+}
+
+.header .logo a {
+    color: #333;
+}
+
+.header .ant-anchor-wrapper {
+    background: none;
+}
+
+.header .ant-anchor {
+    display: flex;
+}
+
+.header .ant-anchor-ink {
+    display: none;
+}
+
+.header .ant-anchor-link {
+    padding: 0 20px;
+    line-height: 1.4;
+    position: relative;
+}
+
+.header .ant-anchor-link:before,
+.header .ant-anchor-link:after {
+    content: '';
+    background: #1890ff;
+    width: 1px;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 30%;
+    opacity: 0;
+    transition: all 0.3s linear;
+}
+
+.header .ant-anchor-link:after {
+    left: auto;
+    right: 30%;
+}
+
+.header .ant-anchor-link.ant-anchor-link-active:before,
+.header .ant-anchor-link:hover:before {
+    left: 5%;
+    opacity: 1;
+}
+
+.header .ant-anchor-link.ant-anchor-link-active:after,
+.header .ant-anchor-link:hover:after {
+    right: 5%;
+    opacity: 1;
+}

@@ -11,10 +11,6 @@ const allReducer = (state = InitialState, action) => {
             return {...state, userObj: action.userInfo}
         case "CHANGE_STATUS_LOGIN":
             return {...state, isLogin: !state.isLogin}
-        case "SIGN_UP":
-
-
-
         default:
             return state
     }

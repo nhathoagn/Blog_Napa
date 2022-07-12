@@ -1,10 +1,11 @@
 import React from "react";
+import AppCarousel from "../carousel/carousel";
 
-function Home() {
+function AppHome() {
     return(
-        <div>
-            Chào Anh, anh vừa đăng ký thằng công rồi đấy, chúc mừng anh
+        <div className="main">
+            <AppCarousel/>
         </div>
     )
 }
-export default Home
+export default AppHome

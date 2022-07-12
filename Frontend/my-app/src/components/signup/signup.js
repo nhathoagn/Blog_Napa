@@ -5,7 +5,7 @@ import {
     Input,
     Select,
 } from 'antd';
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import  "./signup.css"
 import {useNavigate} from "react-router-dom";
 import redux from "redux";
@@ -49,20 +49,31 @@ const tailFormItemLayout = {
 function Signup (props) {
     const [form] = Form.useForm();
     let natigate = useNavigate()
-    const onFinish = async (values) => {
+    const sign = async (values) => {
         console.log('Received values of form: ', values);
-            let data = {firstName: values.firstname,
-            lastName: values.lastname,
-            email: values.email,
-            gender: values.gender,
-            phoneNumber: values.phone,
-            address: values.adress,
-            password: values.password
-        }
-
-
+       // await  setState({
+       //      firstName: values.firstname,
+       //      lastName: values.lastname,
+       //      email: values.email,
+       //      gender: values.gender,
+       //      phoneNumber: values.phoneNumber,
+       //      address: values.address,
+       //      password: values.password
+       //  })
+       //  let data = {
+       //      firstName: "athoanng01",
+       //      lastName: "nguyennh",
+       //      email: "nguyennhathoang35@gmail.com",
+       //      gender: "maleee",
+       //      phoneNumber: "2315351",
+       //      avatar: "https://hinhnen123.com/avatar-trang/",
+       //      password: "anhoango",
+       //      address: "230 Đường Trần Hưng Đạo, An Hải, An Hải Tây, Sơn Trà, Da Nang"
+       //  }
+        // const data1 = JSON.stringify(data)
+        await UserServices.create(values)
+        natigate("/login")
     };
-    console.log("data from form",props.userObj)
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
             <Select
@@ -86,21 +97,13 @@ function Signup (props) {
         password: ""
 
     });
-    let data = {
-        firstName: "athoanng01",
-        lastName: "nguyennh",
-        email: "nguyennhathoang35@gmail.com",
-        gender: "maleee",
-        phoneNumber: "2315351",
-        avatar: "https://hinhnen123.com/avatar-trang/",
-        password: "anhoango",
-        address: "230 Đường Trần Hưng Đạo, An Hải, An Hải Tây, Sơn Trà, Da Nang"
+
+    console.log("state", state)
+
+    const isChange = (e) =>{
+        setState({...state})
     }
-    const signup = async () =>{
-        await UserServices.create(data)
-        props.changeStatusLogin()
-        natigate("/home")
-    }
+
     const login = () => {
         natigate('/login')
     }
@@ -112,9 +115,9 @@ function Signup (props) {
                 {...formItemLayout}
                 form={form}
                 name="register"
-                // onFinish={(data) => signup(data)}
+                  onFinish={sign}
+                  autoComplete="off"
                 initialValues={{
-                    residence: ['zhejiang', 'hangzhou', 'xihu'],
                     prefix: '86',
                 }}
                 scrollToFirstError
@@ -137,7 +140,7 @@ function Signup (props) {
                 </Form.Item>
 
                 <Form.Item
-                    name="firstname"
+                    name="firstName"
                     label="First Name"
                     rules={[
                         {
@@ -154,7 +157,7 @@ function Signup (props) {
                 </Form.Item>
 
                 <Form.Item
-                    name="lastname"
+                    name="lastName"
                     label="Last Name"
                     rules={[
                         {
@@ -181,7 +184,7 @@ function Signup (props) {
                     ]}
                     hasFeedback
                 >
-                    <Input.Password />
+                    <Input.Password/>
                 </Form.Item>
 
                 <Form.Item
@@ -235,11 +238,13 @@ function Signup (props) {
                         style={{
                             width: '100%',
                         }}
+
                     />
                 </Form.Item>
                 <Form.Item
                     name="gender"
                     label="Gender"
+
                     rules={[
                         {
                             required: true,
@@ -268,7 +273,7 @@ function Signup (props) {
                     </Checkbox>
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout} >
-                    <Button type="primary" className="button-signup" htmlType="submit" onClick={ () => signup()}>
+                    <Button type="primary" className="button-signup" htmlType="submit">
                         Sign up
                     </Button>
                     <Button type="primary" htmlType="submit" onClick={ () => login()}>
@@ -279,23 +284,7 @@ function Signup (props) {
         </div>
     );
 };
-const mapStateToProps = (state, ownProps) =>{
-    return {
-       isLogin: state.isLogin,
-        userObj: state.userObj
-    }
-}
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      getDataInput: (userObj) => {
-           dispatch({type: "GET_DATA_USER", userObj })
-        },
-        changeStatusLogin: () =>{
-          dispatch({type: "CHANGE_STATUS_LOGIN"})
-        }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+export default Signup
 
 
 
