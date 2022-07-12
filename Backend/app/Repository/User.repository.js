@@ -1,39 +1,68 @@
 const Joi = require('joi')
-const {Users} = require("../database/models/User")
 const errors = require("../helpers/error.messages")
 const httpCodes = require("../helpers/httpCodes.messages")
 const JWT_SECRET = require("../../config/db.config")
 const http = require("http");
 const generateToken = require('../utils/gennerateJWT')
+const bcrypt = require('bcryptjs');
+const db = require("../database/models");
+const Users = db.users
 const getInternalError = () => ({
     error: { code: httpCodes.INTERNAL_SERVER_ERROR, message: errors.internal },
 });
 // còn passwordhash
 const create = async ( body ) =>{
-    const { firstName,lastName,email,gender,phoneNumber,address,avatar, password} = body
+    const { firstName,lastName,email,gender,phoneNumber,address, password} = body
+    console.log("aaaaaaaaaaaaa")
+    console.log("data controller", body)
+    console.log("data controller", body.email)
+
+    const dataUser = JSON.parse(body)
+    console.log("dataUser",dataUser)
+    console.log("data controller", dataUser.email)
+    console.log("firstName",firstName)
     try {
-        const schema = Joi.object({
-            firstName: Joi.string().length(8).required(),
-            lastName: Joi.string().length(8).required(),
-            email: Joi.string().email().required(),
-            gender: Joi.string().length(6).required(),
-            phoneNumber: Joi.number().integer().required(),
-            address: Joi.string().required(),
-            password: Joi.string().required()
-        }).validate({firstName,lastName,email,gender,phoneNumber,address,password})
-        if (schema.error) return {error: schema.error}
-        const existingEmail = await Users.findOne({ where: {email: body.email}})
-        if (existingEmail){
-            return { error: { code: httpCodes.CONFLICT,message: errors.users.alreadyRegistered}}
+        console.log("---1---")
+        try {
+             Joi.object({
+                firstName: Joi.string().required(),
+                lastName: Joi.string().required(),
+                email: Joi.string().email().required(),
+                gender: Joi.string().required(),
+                phoneNumber: Joi.number().integer().required(),
+                address: Joi.string().required(),
+
+                password: Joi.string().required()
+            }).validate({firstName,lastName,email,gender,phoneNumber,address,password})
+        }catch (e) {
+            console.log(e.message)
         }
-        const passwordHash = await bcrypt.hash(password,10)
+
+        console.log("----1.5------")
+        console.log("----2----")
+        console.log("email", {email: dataUser.email})
+        const existingEmail = await Users.findOne({ where: {email: dataUser.email}})
+        console.log("-----3-----")
+         if (existingEmail){
+             return { error: { code: httpCodes.CONFLICT,message: errors.users.alreadyRegistered}}
+         }
+        const salt = bcrypt.genSaltSync(10);
+        //var hash = bcrypt.hashSync("B4c0/\/", salt);
+        const passwordHash = await bcrypt.hash(dataUser.password,salt)
+        console.log("---4------")
         const avatar = "https://hinhnen123.com/wp-content/uploads/2021/07/hinh-anh-avatar-trang-10.jpg#main"
         const roleID = 1
         const isActive = "active"
-       const user = await Users.create({firstName,lastName,email,gender,phoneNumber,roleID,avatar,password,passwordHash,address,isActive})
+        //
+        console.log("bbbbbbbbbbbbb")
+        const addData = {...dataUser,passwordHash,avatar,roleID,isActive}
+        console.log("addData",addData)
+        const user = await Users.create(addData)
+        console.log("ádasdasdaxzczx")
         return user
     }catch (e) {
-        console.log(error.message)
+        console.log("adsadasd")
+        console.log(e.message)
         return getInternalError()
     }
 }

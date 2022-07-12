@@ -14,11 +14,10 @@ for (let i = 0; i< 10 ; i++){
     address: faker.address.streetAddress(),
     roleID: faker.datatype.uuid(),
     isActive: "inactive",
-    createAt: new Date(),
-    updateAt: new Date()
+    createdAt: new Date(),
+    updatedAt: new Date()
   })
 }
-
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**

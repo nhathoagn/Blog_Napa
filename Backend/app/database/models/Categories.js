@@ -7,6 +7,12 @@ module.exports = (sequelize, Sequelize) =>{
         },
         name:{
            type: Sequelize.STRING
+        },
+        createdAt: {
+            type: Sequelize.DATE,
+        },
+        updatedAt: {
+            type: Sequelize.DATE
         }
     })
     return Categories

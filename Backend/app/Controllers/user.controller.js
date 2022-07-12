@@ -7,13 +7,13 @@ const createUser = async (req, res) =>{
         const { body } = req;
         console.log("sdasda",req.body)
         console.log("---create-user--",body)
-        // const dataUser = JSON.parse(body)
+        const dataUser = JSON.stringify(body)
         // console.log("datauser",dataUser)
-        await UserService.create(body);
-        const {firstName, phoneNumber, email} = body
-        const  token = generateToken({firstName, phoneNumber, email})
-        return res.status(httpCodes.CREATED).json(token)
+       const user = await UserService.create(dataUser);
+
+        return res.status(httpCodes.CREATED).json(user)
     }catch (e) {
+        console.log("controller e",e.message)
         return res.json({ message: e.message})
     }
 }

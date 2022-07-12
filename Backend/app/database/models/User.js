@@ -48,20 +48,21 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: 'inactive',
             // allowNull: false
         },
-        createAt: {
+        createdAt: {
             type: Sequelize.DATE
         },
-        updateAt: {
+        updatedAt: {
             type: Sequelize.DATE
         }
-    },{
-        indexes: [
-            {
-                unique: true,
-                fields: ['firstName','lastName','email','phoneNumber']
-            }
-        ]
-    });
+    })
+    // ,{
+    //     indexes: [
+    //         {
+    //             unique: true,
+    //             fields: ['firstName','lastName','email','phoneNumber']
+    //         }
+    //     ]
+    // });
     Users.associate = (models) =>{
         Users.belongsTo(models.Role
         );

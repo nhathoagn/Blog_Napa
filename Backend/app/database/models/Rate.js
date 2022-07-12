@@ -20,10 +20,10 @@ module.exports = (sequelize, Sequelize) =>{
             type: Sequelize.INTEGER,
             allowNull: false,
         },
-        createAt: {
+        createdAt: {
             type: Sequelize.DATE,
         },
-        updateAt: {
+        updatedAt: {
             type: Sequelize.DATE
         }
 

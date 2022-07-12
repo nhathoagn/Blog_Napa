@@ -14,9 +14,13 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passw
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-// db.users = require("./User")(sequelize, Sequelize);
-// db.post = require("./Post")(sequelize,Sequelize);
-// db.role = require("./Role")(sequelize,Sequelize);
+db.users = require("./User")(sequelize, Sequelize);
+db.post = require("./Post")(sequelize,Sequelize);
+db.role = require("./Role")(sequelize,Sequelize);
+db.bookmark = require("./Bookmark")(sequelize, Sequelize);
+db.comment = require("./Post")(sequelize,Sequelize);
+db.rate = require("./Rate")(sequelize,Sequelize);
+
 
 // db.role.belongsToMany(db.user, {
 //     through: "user_roles",
@@ -29,5 +33,4 @@ db.sequelize = sequelize;
 //     otherKey: "role_id"
 // });
 
-db.ROLES = ["user", "admin",]
 module.exports = db;
