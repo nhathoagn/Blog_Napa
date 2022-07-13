@@ -3,48 +3,78 @@ hero
 ----
 */
 .heroBlock {
-    background: url('../../../public/assets/images/bg-hero.jpg') no-repeat 50% 100%;
-    background-size: cover;
+    /*background: url('../../../public/assets/images/bg-hero.jpg') no-repeat 50% 100%;*/
+    /*background-size: cover;*/
     height: 100vh;
+
 }
 
-.heroBlock .container-fluid {
-    display: block !important;
-}
+/*.heroBlock .container-fluid {*/
+/*    display: block !important;*/
+/*}*/
 
-.heroBlock .ant-carousel,
-.heroBlock .ant-carousel div {
-    height: 100%;
-}
+/*.heroBlock .ant-carousel,*/
+/*.heroBlock .ant-carousel div {*/
+/*    height: 100%;*/
+/*}*/
 
-.heroBlock .slick-dots li button {
-    background: #000 !important;
-}
+/*.heroBlock .slick-dots li button {*/
+/*    background: #000 !important;*/
+/*}*/
 
-.heroBlock .slick-dots li.slick-active button {
-    background: #1890ff !important;
-}
+/*.heroBlock .slick-dots li.slick-active button {*/
+/*    background: #1890ff !important;*/
+/*}*/
 
-.heroBlock .content {
-    max-width: 640px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 0 70px;
+/*.heroBlock .content {*/
+/*    max-width: 640px;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    padding: 0 0 70px;*/
+/*    !*position: relative;*!*/
+/*    !*z-index: 2;*!*/
+/*}*/
+.heroBlock  .img-carousel{
+    position: relative;
+    z-index: 1;
+    width: 100%;
 }
-
+.heroBlock  .content-carousel{
+    position: relative;
+    z-index: 2;
+    bottom: 810px;
+    left: 115px;
+}
 .heroBlock h3 {
     font-size: 30px;
     line-height: 1.2;
-    margin: 0 0 30px;
+    margin: 0 0 30px 64px;
 }
 
 .heroBlock p {
-    margin: 0 0 30px;
+    margin: 0 0 30px 64px;
+    width: 33%;
 }
-
+.heroBlock .content .content-carousel .categories-carousel{
+    font-family: 'Beyond The Mountains';
+    font-size: 136px;
+    color: white;
+    position: relative;
+    left: 23%;
+    z-index: 4;
+    height: 50%;
+    width: 50%;
+}
+.heroBlock .content .categories-carousel h2{
+    color: white;
+}
 .heroBlock .btnHolder {
+    position: relative;
+    z-index: 5;
+    bottom: 821px;
     height: auto !important;
+    left: 182px;
 }
 
 .heroBlock .btnHolder button,
