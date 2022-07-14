@@ -1,0 +1,38 @@
+
+.post-card-view , .post-card-new {
+    margin-top: 30px;
+}
+.post-new{
+    margin-top: 18px;
+}
+.post-container .top-recipe {
+    background: #F8F9FB;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.post-container .top-recipe .section-title {
+    width: 470px;
+    text-align: right;
+    background: #FC0254;
+    padding: 11px 0;
+    padding-right: 40px;
+    position: absolute;
+    left: 0;
+}
+.post-card-categories{
+    background-color: red;
+    width: 24%;
+    text-align: center;
+    border-radius: 5px;
+}
+.post-card-categories h2{
+    color: white;
+
+}
+.post-container .top-recipe .section-title h5 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+}
+

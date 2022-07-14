@@ -27,7 +27,7 @@ function App() {
                 <Route path="/home" element={
                     <Layout className="mainLayout">
                         <Header>
-                            <AppHeader/>
+                            {/*<AppHeader/>*/}
                         </Header>
                         <Content>
                             <AppHome/>
